@@ -35,9 +35,9 @@ contract TrustedAddress {
         return votes[voter].length;
     }
     
-    function votesOf(address voter, uint index) constant returns (address,bool) {
+    function votesOf(address voter, uint index) constant returns (address, bool) {
         address voted = votes[voter][index];
-        return (voted,votesMap[voter][voted]);
+        return (voted, votesMap[voter][voted]);
     }
 
 }
