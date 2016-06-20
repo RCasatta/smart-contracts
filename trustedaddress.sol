@@ -4,7 +4,11 @@ contract TrustedAddress {
     mapping(address => address[]) votes;
     mapping(address => mapping(address => bool)) votesMap;
 
-    function voteFor(address voteFor, bool vote) {
+    function voteNo(address voteFor) {
+        votesMap[msg.sender][voteFor]=false;
+    }
+
+    function voteYes(address voteFor) {
         var voter   = msg.sender;
         var myVotes = votes[voter];
         if(myVotes.length==0) {
@@ -13,7 +17,7 @@ contract TrustedAddress {
         if(!votesMap[voter][voteFor]) {
             myVotes[myVotes.length++]=voteFor;
         }
-        votesMap[voter][voteFor]=vote;
+        votesMap[voter][voteFor]=true;
     }
     
     function totalVoters() constant returns (uint) {
