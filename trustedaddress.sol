@@ -42,4 +42,14 @@ contract TrustedAddress {
         return (voted, votesMap[voter][voted]);
     }
 
+    function deleteEquals(address voter, uint index1, uint index2) {
+        address[] myVotes = votes[voter];
+        address add1 = myVotes[index1];
+        address add2 = myVotes[index2];
+        if(add1 == add2 && add1 != 0 && index1 != index2) {
+            myVotes[index1] = myVotes[myVotes.length-1];
+            myVotes.length--;
+        }
+    }
+
 }
