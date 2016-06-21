@@ -2,25 +2,27 @@ contract TrustedAddress {
 
     address[] voters;
     mapping(address => address[]) votes;
-    mapping(address => mapping(address => bool)) votesMap;
+    mapping(address => mapping(address => int8)) votesMap;
 
-    function voteNo(address voteFor) {
-        votesMap[msg.sender][voteFor] = false;
-    }
-
-    function voteYes(address voteFor) {
-        var voter   = msg.sender;
-        var myVotes = votes[voter];
+    function vote(address voteFor, int vote) {
+        address voter   = msg.sender;
+        address[] myVotes = votes[voter];
 
         if (myVotes.length == 0) {
             voters.push(voter);
         }
 
-        if (!votesMap[voter][voteFor]) {
+        if (votesMap[voter][voteFor] == 0) {
             myVotes.push(voteFor);
         }
-
-        votesMap[voter][voteFor] = true;
+        
+        if(vote == 0) {
+            votesMap[voter][voteFor] = 0;
+        } else if (vote > 0) {
+            votesMap[voter][voteFor] = 1;
+        } else {
+            votesMap[voter][voteFor] = -1;
+        }
     }
 
     function totalVoters() constant returns (uint) {
@@ -35,7 +37,7 @@ contract TrustedAddress {
         return votes[voter].length;
     }
 
-    function votesOf(address voter, uint index) constant returns (address, bool) {
+    function votesOf(address voter, uint index) constant returns (address, int8) {
         address voted = votes[voter][index];
         return (voted, votesMap[voter][voted]);
     }
