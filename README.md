@@ -6,6 +6,7 @@ The TrustedAddress Smart Contract is based around an extremely simple Web of Tru
   * Neutral or reset:  0
   * Vote of distrust:  -1
 
+The contract has been deployed on Morden testnet at address [0xd2f068a3b3cffafed8880cfd92715602bd0c0ef0](https://morden.ether.camp/account/d2f068a3b3cffafed8880cfd92715602bd0c0ef0).
 ## The commented code
 
 ```solidity
@@ -77,8 +78,8 @@ contract TrustedAddress {
 We wanted to keep it simple. There is no web interface to interact with the contract, but interaction can happen through Geth or Parity console.
 
 ```js
-var contrAddr = /* Address*/;
-var ABI = /*Replace with interface string */;
+var contrAddr = '0xd2f068a3b3cffafed8880cfd92715602bd0c0ef0';
+var ABI = /*Replace with interface string from file */;
 var trustedAddress = eth.contract(ABI).at(contrAddr);
 ```
 
@@ -94,6 +95,6 @@ trustedAddress.vote(voteFor, vote, {from: eth.accounts[0], gas: 140000});
 Currently, it's clearly not fully Sybil Attack resistant. Although there is a small cost which has to be spent by each transaction, nothing prevents someone to pollute the contract with thousands of fake votes, paying the due amount of gas. But on the client-side is possible to filter and perform computation on the data, for example:
   * We could consider only the votes of addresses we trust in first place: e.g friends, developers, community leaders
   * The data structure chosen enables client-side collaborative filtering
-  * In the future, it could be possible to build an integration with Proof-of-Identity systems, e.g the Estonian ID system as shown [here](https://github.com/oraclize/dapp-proof-of-identity).
+  * In the future, it could be possible to build an integration with Proof-of-Identity systems.
 
 Riccardo Casatta e Marco Giglio
