@@ -6,7 +6,7 @@ The TrustedAddress Smart Contract is based around an extremely simple Web of Tru
   * Neutral or reset:  0
   * Vote of distrust:  -1
 
-The contract has been deployed on Morden testnet at address [0xd2f068a3b3cffafed8880cfd92715602bd0c0ef0](https://morden.ether.camp/account/d2f068a3b3cffafed8880cfd92715602bd0c0ef0).
+The contract has been deployed on Morden testnet at address [0x4d186c43198b3505a41d924a6e2aa6e69d41e978](https://morden.ether.camp/account/4d186c43198b3505a41d924a6e2aa6e69d41e978).
 ## The commented code
 
 ```solidity
@@ -78,7 +78,7 @@ contract TrustedAddress {
 We wanted to keep it simple. There is no web interface to interact with the contract, but interaction can happen through Geth or Parity console.
 
 ```js
-var contrAddr = '0xd2f068a3b3cffafed8880cfd92715602bd0c0ef0';
+var contrAddr = '0x4d186c43198b3505a41d924a6e2aa6e69d41e978';
 var ABI = /*Replace with interface string from file */;
 var trustedAddress = eth.contract(ABI).at(contrAddr);
 ```
