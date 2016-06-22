@@ -7,6 +7,6 @@ for (var i = 0; i < contrTrustedAddr.totalVoters(); i++ ) {
     var voter = contrTrustedAddr.voterOfIndex(i);
  	  console.log(voter);
     for (var j = 0; j - contrTrustedAddr.totalVotesOf(voter); j++) {
-        console.log(" " +contrTrustedAddr.votesOf(voter,j));
+        console.log(" " +contrTrustedAddr.votesMap(voter,j));
  	  }
 }
