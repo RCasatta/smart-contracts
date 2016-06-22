@@ -4,7 +4,7 @@ var contrAddr = '0xd2f068a3b3cffafed8880cfd92715602bd0c0ef0';
 var contrTrustedAddr = eth.contract(ABI).at(contrAddr);
 
 for (var i = 0; i < contrTrustedAddr.totalVoters(); i++ ) {
-    var voter = contrTrustedAddr.votersOfIndex(i);
+    var voter = contrTrustedAddr.voterOfIndex(i);
  	  console.log(voter);
     for (var j = 0; j - contrTrustedAddr.totalVotesOf(voter); j++) {
         console.log(" " +contrTrustedAddr.votesOf(voter,j));
